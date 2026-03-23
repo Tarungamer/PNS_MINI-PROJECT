@@ -1,0 +1,7 @@
+condition,max_sodium_mg,max_sugar_g,max_glycemic_index,protein_priority,iron_priority,fat_limit
+Diabetes,140,25,55,High,Normal,Low
+Hypertension,120,30,60,Moderate,Normal,Low
+Heart Disease,130,25,60,High,Normal,Very Low
+Anemia,200,40,65,Moderate,High,Low
+Obesity,150,20,55,High,Normal,Low
+Normal,200,40,70,Moderate,Normal,Moderate

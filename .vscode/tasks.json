@@ -1,0 +1,208 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Install backend deps",
+			"type": "shell",
+			"command": "cmd",
+			"args": [
+				"/c",
+				"cd /d \"c:\\Users\\Tarun\\Desktop\\PNS MINI PROJECT\" & .venv\\Scripts\\python.exe -m pip install -r backend\\requirements.txt"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Build frontend (Vite)",
+			"type": "shell",
+			"command": "cmd",
+			"args": [
+				"/c",
+				"cd /d \"c:\\Users\\Tarun\\Desktop\\PNS MINI PROJECT\\frontend\" & npm install & npm run build"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Train model",
+			"type": "shell",
+			"command": "cmd",
+			"args": [
+				"/c",
+				"cd /d \"c:\\Users\\Tarun\\Desktop\\PNS MINI PROJECT\" & .venv\\Scripts\\python.exe backend\\train_model.py"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Run Flask (serves frontend)",
+			"type": "shell",
+			"command": "cmd",
+			"args": [
+				"/c",
+				"cd /d \"c:\\Users\\Tarun\\Desktop\\PNS MINI PROJECT\" & set FLASK_ENV=development & .venv\\Scripts\\python.exe -m flask --app backend.app run --host 127.0.0.1 --port 5000"
+			],
+			"isBackground": true,
+			"problemMatcher": [],
+			"group": "test"
+		},
+		{
+			"label": "Rebuild frontend (weekly plan UI)",
+			"type": "shell",
+			"command": "cmd",
+			"args": [
+				"/c",
+				"cd /d \"c:\\Users\\Tarun\\Desktop\\PNS MINI PROJECT\\frontend\" & npm run build"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Smoke test /weekly-plan",
+			"type": "shell",
+			"command": "cmd",
+			"args": [
+				"/c",
+				"cd /d \"c:\\Users\\Tarun\\Desktop\\PNS MINI PROJECT\" & .venv\\Scripts\\python.exe -c \"import pandas as pd, json, urllib.request; u=pd.read_csv('backend/data/user_health_profile_1000.csv'); uid=str(u.iloc[0]['user_id']); payload={'user_id':uid,'days':7}; data=json.dumps(payload).encode('utf-8'); req=urllib.request.Request('http://127.0.0.1:5000/weekly-plan', data=data, headers={'Content-Type':'application/json'}); out=urllib.request.urlopen(req, timeout=10).read().decode('utf-8'); print('user_id=',uid); print(out[:900])\""
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "test"
+		},
+		{
+			"label": "Stop Flask (port 5000)",
+			"type": "shell",
+			"command": "cmd",
+			"args": [
+				"/c",
+				"for /f \"tokens=5\" %a in ('netstat -ano ^| findstr LISTENING ^| findstr :5000') do taskkill /PID %a /F"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "test"
+		},
+		{
+			"label": "Run Flask (serves frontend)",
+			"type": "shell",
+			"command": "cmd",
+			"args": [
+				"/c",
+				"cd /d \"c:\\Users\\Tarun\\Desktop\\PNS MINI PROJECT\" & set FLASK_ENV=development & .venv\\Scripts\\python.exe -m flask --app backend.app run --host 127.0.0.1 --port 5000"
+			],
+			"isBackground": true,
+			"problemMatcher": [],
+			"group": "test"
+		},
+		{
+			"label": "Build frontend (Vite)",
+			"type": "shell",
+			"command": "cmd",
+			"args": [
+				"/c",
+				"cd /d \"c:\\Users\\Tarun\\Desktop\\PNS MINI PROJECT\\frontend\" & npm run build"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Run Flask (serves frontend)",
+			"type": "shell",
+			"command": "cmd",
+			"args": [
+				"/c",
+				"cd /d \"c:\\Users\\Tarun\\Desktop\\PNS MINI PROJECT\" & set FLASK_ENV=development & .venv\\Scripts\\python.exe -m flask --app backend.app run --host 127.0.0.1 --port 5000"
+			],
+			"isBackground": true,
+			"problemMatcher": [],
+			"group": "test"
+		},
+		{
+			"label": "Smoke test /weekly-plan (inline user)",
+			"type": "shell",
+			"command": "cmd",
+			"args": [
+				"/c",
+				"cd /d \"c:\\Users\\Tarun\\Desktop\\PNS MINI PROJECT\" & .venv\\Scripts\\python.exe -c \"import json, urllib.request; payload={'user':{'user_id':'demo_user','age':28,'gender':'Male','height_cm':172,'weight_kg':74,'diet_type':'Veg','activity_level':'Medium','allergies':[],'diabetes':False,'blood_pressure':'Normal','cholesterol':'Normal','oxygen_level':98,'hemoglobin':'Normal'},'days':7}; data=json.dumps(payload).encode('utf-8'); req=urllib.request.Request('http://127.0.0.1:5000/weekly-plan', data=data, headers={'Content-Type':'application/json'}); resp=urllib.request.urlopen(req, timeout=10).read().decode('utf-8'); print(resp[:1000])\""
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "test"
+		},
+		{
+			"label": "Build frontend (Vite)",
+			"type": "shell",
+			"command": "cmd",
+			"args": [
+				"/c",
+				"cd /d \"c:\\Users\\Tarun\\Desktop\\PNS MINI PROJECT\\frontend\" & npm run build"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Build frontend (Vite)",
+			"type": "shell",
+			"command": "cmd",
+			"args": [
+				"/c",
+				"cd /d \"c:\\Users\\Tarun\\Desktop\\PNS MINI PROJECT\\frontend\" & npm run build"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Build frontend (Vite)",
+			"type": "shell",
+			"command": "cmd",
+			"args": [
+				"/c",
+				"cd /d \"c:\\Users\\Tarun\\Desktop\\PNS MINI PROJECT\\frontend\" & npm run build"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Smoke test /foods (python)",
+			"type": "shell",
+			"command": "cmd",
+			"args": [
+				"/c",
+				"cd /d \"c:\\Users\\Tarun\\Desktop\\PNS MINI PROJECT\" & .venv\\Scripts\\python.exe -c \"import json, urllib.request; payload={'user':{'age':28,'gender':'Male','height_cm':172,'weight_kg':74,'diet_type':'Veg','activity_level':'Medium','allergies':[],'diabetes':False,'blood_pressure':'Normal','cholesterol':'Normal','oxygen_level':98,'hemoglobin':'Normal','goal':'Lose fat'},'limit':10}; data=json.dumps(payload).encode('utf-8'); req=urllib.request.Request('http://127.0.0.1:5000/foods', data=data, headers={'Content-Type':'application/json'}); out=urllib.request.urlopen(req, timeout=10).read().decode('utf-8'); print(out[:600])\""
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "test"
+		},
+		{
+			"label": "Run Flask (serves frontend)",
+			"type": "shell",
+			"command": "cmd",
+			"args": [
+				"/c",
+				"cd /d \"c:\\Users\\Tarun\\Desktop\\PNS MINI PROJECT\" & set FLASK_ENV=development & .venv\\Scripts\\python.exe -m flask --app backend.app run --host 127.0.0.1 --port 5000"
+			],
+			"isBackground": true,
+			"problemMatcher": [],
+			"group": "test"
+		},
+		{
+			"label": "Smoke test /foods (python)",
+			"type": "shell",
+			"command": "cmd",
+			"args": [
+				"/c",
+				"cd /d \"c:\\Users\\Tarun\\Desktop\\PNS MINI PROJECT\" & .venv\\Scripts\\python.exe -c \"import json, urllib.request; payload={'user':{'age':28,'gender':'Male','height_cm':172,'weight_kg':74,'diet_type':'Veg','activity_level':'Medium','allergies':[],'diabetes':False,'blood_pressure':'Normal','cholesterol':'Normal','oxygen_level':98,'hemoglobin':'Normal','goal':'Lose fat'},'limit':10}; data=json.dumps(payload).encode('utf-8'); req=urllib.request.Request('http://127.0.0.1:5000/foods', data=data, headers={'Content-Type':'application/json'}); out=urllib.request.urlopen(req, timeout=10).read().decode('utf-8'); print(out[:600])\""
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "test"
+		}
+	]
+}

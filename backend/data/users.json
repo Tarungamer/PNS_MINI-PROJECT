@@ -1,0 +1,19 @@
+[
+  {
+    "user_id": "user_1",
+    "age": 30,
+    "gender": "Male",
+    "height_cm": 170,
+    "weight_kg": 70,
+    "diet_type": "Veg",
+    "activity_level": "Medium",
+    "allergies": [
+      "peanut"
+    ],
+    "diabetes": true,
+    "blood_pressure": "Normal",
+    "cholesterol": "Normal",
+    "oxygen_level": 98,
+    "hemoglobin": "Normal"
+  }
+]

@@ -1,0 +1,19 @@
+{
+  "user_id": "user_1",
+  "age": 35,
+  "gender": "Female",
+  "height_cm": 165,
+  "weight_kg": 72,
+  "bmi": null,
+  "diet_type": "Veg",
+  "activity_level": "Low",
+  "allergies": ["peanut"],
+  "diabetes": false,
+  "blood_pressure": "Normal",
+  "cholesterol": "Normal",
+  "oxygen_level": 98,
+  "hemoglobin": "Normal",
+  "thyroid": false,
+  "heart_disease": false,
+  "pcos": false
+}
